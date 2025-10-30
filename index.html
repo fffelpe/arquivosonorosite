@@ -11,8 +11,8 @@
     .report-button { position: absolute; top: 1rem; right: 1rem; }
     .report-button a { background: #ff5c5c; color: #fff; padding: 0.5rem 1rem; text-decoration: none; border-radius: 4px; font-size: 0.9rem; }
     .search-bar { margin-top: 1rem; }
-    .search-bar input { width: 50%; padding: 0.6rem; font-size: 1rem; border-radius: 4px; border: 1px solid #ccc; }
-    .section-title { margin: 2rem 1rem 1rem; font-size: 1.5rem; color: #333; }
+    .search-bar input { width: 60%; padding: 0.7rem; font-size: 1rem; border-radius: 4px; border: 1px solid #ccc; }
+    .section-title { margin: 2rem 1rem 1rem; font-size: 1.5rem; color: #333; text-align: center; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; padding: 0 1rem 2rem; }
     .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; transition: transform 0.2s ease; }
     .card:hover { transform: scale(1.02); }
@@ -21,14 +21,13 @@
   </style>
 </head>
 <body>
-  
   <header>
     <h1>ARQUIVO SONORO</h1>
     <div class="report-button">
-      <a href="https://fffelpe.github.io/arquivosonorosite/contato.html">Reportar erro / Sugerir artista</a>
+      <a href="mailto:central.espacocriativo@gmail.com?subject=Reportar erro ou sugestão">Reportar erro / Sugerir artista</a>
     </div>
     <div class="search-bar">
-      <input type="text" placeholder="Buscar artista ou álbum..." />
+      <input type="text" id="searchInput" placeholder="Buscar artista ou álbum..." />
     </div>
   </header>
 
@@ -38,16 +37,20 @@
   <h2 class="section-title">Últimos Álbuns</h2>
   <section class="grid" id="albuns"></section>
 
+  <h2 class="section-title">Resultados da Busca</h2>
+  <section class="grid" id="searchResults"></section>
+
   <script>
-    fetch("data/atualizacoes.json")
+    let catalogo = { artistas: [], albuns: [] };
+
+    fetch("catalogo.json")
       .then(res => res.json())
       .then(data => {
+        catalogo = data;
+
+        // Mostrar os 5 últimos artistas
         const artistas = data.artistas.slice(0, 5);
-        const albuns = data.albuns.slice(0, 5);
-
         const artistaContainer = document.getElementById("artistas");
-        const albumContainer = document.getElementById("albuns");
-
         artistas.forEach(a => {
           artistaContainer.innerHTML += `
             <div class="card">
@@ -58,6 +61,9 @@
             </div>`;
         });
 
+        // Mostrar os 5 últimos álbuns
+        const albuns = data.albuns.slice(0, 5);
+        const albumContainer = document.getElementById("albuns");
         albuns.forEach(a => {
           albumContainer.innerHTML += `
             <div class="card">
@@ -68,6 +74,56 @@
             </div>`;
         });
       });
+
+    // Busca instantânea
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const termo = this.value.toLowerCase().trim();
+      const resultados = document.getElementById("searchResults");
+      resultados.innerHTML = "";
+
+      if (termo.length < 1) return;
+
+      const encontrados = [];
+
+      catalogo.artistas.forEach(a => {
+        if (a.nome.toLowerCase().includes(termo)) {
+          encontrados.push({
+            tipo: "Artista",
+            nome: a.nome,
+            slug: a.slug,
+            link: `artistas/${a.slug}.html`,
+            imagem: `assets/img/${a.slug}.jpg`
+          });
+        }
+      });
+
+      catalogo.albuns.forEach(a => {
+        if (a.nome.toLowerCase().includes(termo)) {
+          encontrados.push({
+            tipo: "Álbum",
+            nome: a.nome,
+            slug: a.slug,
+            link: `albuns/${a.slug}.html`,
+            imagem: `assets/img/${a.slug}.jpg`
+          });
+        }
+      });
+
+      if (encontrados.length === 0) {
+        resultados.innerHTML = "<p style='text-align:center;'>Nenhum resultado encontrado.</p>";
+        return;
+      }
+
+      encontrados.forEach(item => {
+        resultados.innerHTML += `
+          <div class="card">
+            <a href="${item.link}">
+              <img src="${item.imagem}" alt="${item.nome}" />
+              <h3>${item.nome} (${item.tipo})</h3>
+            </a>
+          </div>`;
+      });
+    });
   </script>
 </body>
 </html>
