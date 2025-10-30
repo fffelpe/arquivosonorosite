@@ -23,7 +23,7 @@ jobs:
       run: pip install requests
 
     - name: Rodar script de geração
-      run: python backend/generate_index.py
+      run: python generate_index.py
 
     - name: Commitar mudanças
       run: |
