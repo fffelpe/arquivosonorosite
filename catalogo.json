@@ -3,12 +3,20 @@
     {
       "nome": "Copacabana Club",
       "slug": "copacabana-club"
+    },
+    {
+      "nome": "Alan Palomo",
+      "slug": "alan-palomo"
     }
   ],
   "albuns": [
     {
       "nome": "Tropical Splash",
       "slug": "tropical-splash"
+    },
+    {
+      "nome": "World of Hassle",
+      "slug": "world-of-hassle"
     }
   ]
 }
