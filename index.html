@@ -5,89 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arquivo Sonoro</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-    }
-
-    header {
-      background-color: #222;
-      color: #fff;
-      padding: 2rem 1rem 1rem;
-      text-align: center;
-      position: relative;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    .report-button {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-    }
-
-    .report-button a {
-      background-color: #ff5c5c;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
-
-    .search-bar {
-      margin-top: 1rem;
-    }
-
-    .search-bar input {
-      width: 50%;
-      padding: 0.6rem;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-
-    .section-title {
-      margin: 2rem 1rem 1rem;
-      font-size: 1.5rem;
-      color: #333;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-      padding: 0 1rem 2rem;
-    }
-
-    .card {
-      background-color: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: scale(1.02);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .card h3 {
-      margin: 0.5rem;
-      font-size: 1rem;
-      color: #222;
-    }
+    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #222; color: #fff; padding: 2rem 1rem 1rem; text-align: center; position: relative; }
+    header h1 { margin: 0; font-size: 2.5rem; }
+    .report-button { position: absolute; top: 1rem; right: 1rem; }
+    .report-button a { background: #ff5c5c; color: #fff; padding: 0.5rem 1rem; text-decoration: none; border-radius: 4px; font-size: 0.9rem; }
+    .search-bar { margin-top: 1rem; }
+    .search-bar input { width: 50%; padding: 0.6rem; font-size: 1rem; border-radius: 4px; border: 1px solid #ccc; }
+    .section-title { margin: 2rem 1rem 1rem; font-size: 1.5rem; color: #333; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; padding: 0 1rem 2rem; }
+    .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; transition: transform 0.2s ease; }
+    .card:hover { transform: scale(1.02); }
+    .card img { width: 100%; height: 200px; object-fit: cover; }
+    .card h3 { margin: 0.5rem; font-size: 1rem; color: #222; }
   </style>
 </head>
 <body>
@@ -102,73 +32,41 @@
   </header>
 
   <h2 class="section-title">Últimos Artistas</h2>
-  <section class="grid">
-    <!-- Cards de artistas -->
-    <div class="card">
-      <a href="artistas/elis-regina.html">
-        <img src="assets/img/elis-regina.jpg" alt="Elis Regina" />
-        <h3>Elis Regina</h3>
-      </a>
-    </div>
-    <div class="card">
-      <a href="artistas/chico-buarque.html">
-        <img src="assets/img/chico-buarque.jpg" alt="Chico Buarque" />
-        <h3>Chico Buarque</h3>
-      </a>
-    </div>
-    <div class="card">
-      <a href="artistas/marisa-monte.html">
-        <img src="assets/img/marisa-monte.jpg" alt="Marisa Monte" />
-        <h3>Marisa Monte</h3>
-      </a>
-    </div>
-    <div class="card">
-      <a href="artistas/gilberto-gil.html">
-        <img src="assets/img/gilberto-gil.jpg" alt="Gilberto Gil" />
-        <h3>Gilberto Gil</h3>
-      </a>
-    </div>
-    <div class="card">
-      <a href="artistas/caetano-veloso.html">
-        <img src="assets/img/caetano-veloso.jpg" alt="Caetano Veloso" />
-        <h3>Caetano Veloso</h3>
-      </a>
-    </div>
-  </section>
+  <section class="grid" id="artistas"></section>
 
   <h2 class="section-title">Últimos Álbuns</h2>
-  <section class="grid">
-    <!-- Cards de álbuns -->
-    <div class="card">
-      <a href="albuns/falso-brilhante.html">
-        <img src="assets/img/falso-brilhante.jpg" alt="Falso Brilhante" />
-        <h3>Falso Brilhante</h3>
-      </a>
-    </div>
-    <div class="card">
-      <a href="albuns/construcao.html">
-        <img src="assets/img/construcao.jpg" alt="Construção" />
-        <h3>Construção</h3>
-      </a>
-    </div>
-    <div class="card">
-      <a href="albuns/verde-anil.html">
-        <img src="assets/img/verde-anil.jpg" alt="Verde Anil" />
-        <h3>Verde Anil</h3>
-      </a>
-    </div>
-    <div class="card">
-      <a href="albuns/transa.html">
-        <img src="assets/img/transa.jpg" alt="Transa" />
-        <h3>Transa</h3>
-      </a>
-    </div>
-    <div class="card">
-      <a href="albuns/refazenda.html">
-        <img src="assets/img/refazenda.jpg" alt="Refazenda" />
-        <h3>Refazenda</h3>
-      </a>
-    </div>
-  </section>
+  <section class="grid" id="albuns"></section>
+
+  <script>
+    fetch("data/atualizacoes.json")
+      .then(res => res.json())
+      .then(data => {
+        const artistas = data.artistas.slice(0, 5);
+        const albuns = data.albuns.slice(0, 5);
+
+        const artistaContainer = document.getElementById("artistas");
+        const albumContainer = document.getElementById("albuns");
+
+        artistas.forEach(a => {
+          artistaContainer.innerHTML += `
+            <div class="card">
+              <a href="artistas/${a.slug}.html">
+                <img src="assets/img/${a.slug}.jpg" alt="${a.nome}" />
+                <h3>${a.nome}</h3>
+              </a>
+            </div>`;
+        });
+
+        albuns.forEach(a => {
+          albumContainer.innerHTML += `
+            <div class="card">
+              <a href="albuns/${a.slug}.html">
+                <img src="assets/img/${a.slug}.jpg" alt="${a.nome}" />
+                <h3>${a.nome}</h3>
+              </a>
+            </div>`;
+        });
+      });
+  </script>
 </body>
 </html>
