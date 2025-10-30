@@ -1,0 +1,14 @@
+{
+  "artistas": [
+    {
+      "nome": "Copacabana Club",
+      "slug": "copacabana-club"
+    }
+  ],
+  "albuns": [
+    {
+      "nome": "Tropical Splash",
+      "slug": "tropical-splash"
+    }
+  ]
+}
