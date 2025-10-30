@@ -56,6 +56,11 @@
   </style>
 </head>
 <body>
+
+   <header>
+    <a href="index.html"><h1>ARQUIVO SONORO</h1></a>
+  </header>
+  
   <h1>Reportar Erro ou Sugerir Artista</h1>
   <form id="reportForm">
     <label for="nome">Seu nome</label>
@@ -81,5 +86,15 @@
       window.location.href = mailtoLink;
     });
   </script>
+
+   <footer>
+        &copy; <span id="anoRodape"></span> ARQUIVO SONORO
+        </footer>
+
+<script>
+  // Atualiza o ano automaticamente
+  document.getElementById("anoRodape").textContent = new Date().getFullYear();
+</script>
+  
 </body>
 </html>
